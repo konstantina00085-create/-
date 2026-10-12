@@ -3,7 +3,16 @@ from datetime import date
 from fpdf import FPDF
 import tempfile
 import os
-# Απλή συνάρτηση PDF: Μόνο τίτλος, ημερομηνία και τα ονόματα των κατσικιών στα αγγλικά
+# Βοηθητική συνάρτηση για λήψη της εικόνας
+def download_image(url):
+    try:
+        temp_img = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
+        urllib.request.urlretrieve(url, temp_img.name)
+        return temp_img.name
+    except Exception:
+        return None
+
+# Συνάρτηση PDF με τις εικόνες και τα ονόματα
 def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf = FPDF()
     pdf.add_page()
@@ -15,21 +24,40 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     
     pdf.set_font("helvetica", "", 11)
     pdf.cell(0, 8, f"Birth Date: {b_date} | Hour: {b_hour}:00", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.ln(15)
+    pdf.ln(10)
     
-    # Main Goat (Όνομα στα αγγλικά)
+    # 1. Main Goat & Εικόνα
     pdf.set_font("helvetica", "B", 14)
     pdf.cell(0, 8, "1. MAIN GOAT", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("helvetica", "", 12)
-    pdf.cell(0, 8, f"Breed: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 6, f"Breed: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(5)
+    
+    img1_path = download_image(main_g['img'])
+    if img1_path and os.path.exists(img1_path):
+        try:
+            pdf.image(img1_path, x=15, w=50) # Προσθήκη εικόνας
+            pdf.ln(5)
+        except Exception:
+            pass
+            
     pdf.ln(10)
     
-    # Ascendant Goat (Όνομα στα αγγλικά)
+    # 2. Ascendant Goat & Εικόνα
     pdf.set_font("helvetica", "B", 14)
     pdf.cell(0, 8, "2. ASCENDANT GOAT", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("helvetica", "", 12)
-    pdf.cell(0, 8, f"Breed: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 6, f"Breed: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(5)
     
+    img2_path = download_image(asc_g['img'])
+    if img2_path and os.path.exists(img2_path):
+        try:
+            pdf.image(img2_path, x=15, w=50) # Προσθήκη εικόνας
+            pdf.ln(5)
+        except Exception:
+            pass
+
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     pdf.output(temp_file.name)
     return temp_file.name
