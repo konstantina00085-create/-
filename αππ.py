@@ -3,13 +3,13 @@ from datetime import date
 from fpdf import FPDF
 import tempfile
 import os
-# Συνάρτηση δημιουργίας PDF με τα στοιχεία και υπογραφή στο τέλος
+# Συνάρτηση δημιουργίας PDF 100% σταθερή στα Αγγλικά
 def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_auto_page_break(auto=True, margin=15)
     
-    # Τίτλος
+    # Title
     pdf.set_font("helvetica", "B", 18)
     pdf.cell(0, 10, "THE GOAT HOROSCOPE", align="C", new_x="LMARGIN", new_y="NEXT")
     
@@ -22,8 +22,7 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.cell(0, 8, "1. MAIN GOAT", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("helvetica", "", 11)
     pdf.cell(0, 6, f"Breed: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 6, f"Keywords: {main_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
-    pdf.multi_cell(0, 6, f"Description: {main_g['desc']}")
+    pdf.cell(0, 6, f"Vibe: Check the app screen for details", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 6, f"Matches: {main_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(10)
     
@@ -32,12 +31,11 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.cell(0, 8, "2. ASCENDANT GOAT", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("helvetica", "", 11)
     pdf.cell(0, 6, f"Breed: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 6, f"Keywords: {asc_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
-    pdf.multi_cell(0, 6, f"Description: {asc_g['desc']}")
+    pdf.cell(0, 6, f"Vibe: Check the app screen for details", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 6, f"Matches: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(15)
     
-    # Υπογραφή με ΠΟΛΥ ΜΕΓΑΛΑ ΓΡΑΜΜΑΤΑ στο τέλος
+    # Signature with VERY BIG letters at the end
     pdf.set_font("helvetica", "B", 16)
     pdf.cell(0, 10, "WITH LOVE KATSIKOPODARES", align="C", new_x="LMARGIN", new_y="NEXT")
     
