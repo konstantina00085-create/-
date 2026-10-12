@@ -1,7 +1,8 @@
 import streamlit as st
 from datetime import date
 from fpdf import FPDF
-
+import tempfile
+import os
 # Απλή συνάρτηση PDF: Μόνο τίτλος, ημερομηνία και τα ονόματα των κατσικιών στα αγγλικά
 def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf = FPDF()
