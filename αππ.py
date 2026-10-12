@@ -1,9 +1,8 @@
 import streamlit as st
 from datetime import date
 from fpdf import FPDF
-import tempfile
-import os
-# Συνάρτηση δημιουργίας απλού PDF (μόνο όνομα κατσίκας και βασικά αγγλικά στοιχεία)
+
+# Απλή συνάρτηση PDF: Μόνο τίτλος, ημερομηνία και τα ονόματα των κατσικιών στα αγγλικά
 def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf = FPDF()
     pdf.add_page()
@@ -17,27 +16,22 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.cell(0, 8, f"Birth Date: {b_date} | Hour: {b_hour}:00", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(15)
     
-    # Κύριο Ζώδιο (Main Goat)
+    # Main Goat (Όνομα στα αγγλικά)
     pdf.set_font("helvetica", "B", 14)
-    pdf.cell(0, 8, f"1. MAIN GOAT: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
-    
-    pdf.set_font("helvetica", "", 11)
-    pdf.multi_cell(0, 6, f"Description: {main_g['desc']}")
-    pdf.cell(0, 8, f"Matches: {main_g['matches']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 8, "1. MAIN GOAT", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "", 12)
+    pdf.cell(0, 8, f"Breed: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(10)
     
-    # Ωροσκόπος (Ascendant Goat)
+    # Ascendant Goat (Όνομα στα αγγλικά)
     pdf.set_font("helvetica", "B", 14)
-    pdf.cell(0, 8, f"2. ASCENDANT GOAT: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
-    
-    pdf.set_font("helvetica", "", 11)
-    pdf.multi_cell(0, 6, f"Description: {asc_g['desc']}")
-    pdf.cell(0, 8, f"Matches: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 8, "2. ASCENDANT GOAT", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "", 12)
+    pdf.cell(0, 8, f"Breed: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
     
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     pdf.output(temp_file.name)
     return temp_file.name
-
     
 # Επιστροφή σε centered layout για να φαίνονται ολόκληρες και σωστές οι εικόνες
 st.set_page_config(
