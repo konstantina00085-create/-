@@ -35,10 +35,10 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.cell(0, 6, f"Matches: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(15)
     
-    # Signature with VERY BIG letters at the end
+  # Signature with VERY BIG letters at the end
     pdf.set_font("helvetica", "B", 22)
-    pdf.cell(0, 10, "WITH LOVE,", align="C", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 10, ," KATSIKOPODARES F.C.", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 12, "WITH LOVE,", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 12, "KATSIKOPODARES F.C.", align="C", new_x="LMARGIN", new_y="NEXT")
 
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     pdf.output(temp_file.name)
