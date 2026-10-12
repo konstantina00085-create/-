@@ -263,11 +263,6 @@ if submitted:
 
     st.markdown("---")
     
-    
-st.markdown("---")
-    
-st.markdown("---")
-    
     # Κεντραρισμένο κουμπί Instagram
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
