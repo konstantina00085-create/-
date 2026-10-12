@@ -264,17 +264,16 @@ if submitted:
     st.markdown("---")
     
     
-    # Clickable Link για το Instagram σε γήινο χρώμα (#7A431D)
-    st.markdown(
-        """
-        <div style="text-align: center; margin-bottom: 20px;">
-            <a href="https://www.instagram.com/katsikopodares.fc/" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #7A431D;">
-                📸 Follow us on Instagram: @katsikopodares.fc
-            </a>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
+st.markdown("---")
+    
+    # Κεντραρισμένο κουμπί Instagram που πατιέται τέλεια σε κινητά και PC
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.link_button(
+            "📸 Follow us on Instagram: @katsikopodares.fc",
+            "https://www.instagram.com/katsikopodares.fc/",
+            use_container_width=True
+        )
 
         # Δημιουργία PDF αρχείου
     pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
