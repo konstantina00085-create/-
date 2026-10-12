@@ -269,16 +269,6 @@ if submitted:
         """, 
         unsafe_allow_html=True
     )
-            </a>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-            </a>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
 
         # Δημιουργία PDF αρχείου
     pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
