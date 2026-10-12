@@ -266,7 +266,9 @@ if submitted:
     
 st.markdown("---")
     
-    # Κεντραρισμένο κουμπί Instagram που πατιέται τέλεια σε κινητά και PC
+st.markdown("---")
+    
+    # Κεντραρισμένο κουμπί Instagram
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.link_button(
