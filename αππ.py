@@ -258,17 +258,18 @@ if submitted:
     
  
     
-    #Clickable Link για το Instagram κάτω από τις κάρτες
+# Clickable Link για το Instagram κάτω από τις κάρτες
     st.markdown(
         """
         <div style="text-align: center; margin-bottom: 20px;">
-            <a href="https://www.instagram.com/TO_INSTAGRAM_SOY" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
-               "📸" Follow us on Instagram: https://www.instagram.com/katsikopodares.fc/?utm_source=ig_web_button_share_sheet
+            <a href="https://www.instagram.com/katsikopodares.fc/" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
+                📸 Follow us on Instagram: @katsikopodares.fc
             </a>
         </div>
         """, 
         unsafe_allow_html=True
     )
+ 
 
         # Δημιουργία PDF αρχείου
     pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
