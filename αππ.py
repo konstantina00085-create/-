@@ -36,8 +36,8 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.ln(15)
     
     # Signature with VERY BIG letters at the end
-    pdf.set_font("helvetica", "B", 16)
-    pdf.cell(0, 10, "WITH LOVE KATSIKOPODARES", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "B", 22)
+    pdf.cell(0, 10, "WITH LOVE, KATSIKOPODARES", align="C", new_x="LMARGIN", new_y="NEXT")
     
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     pdf.output(temp_file.name)
