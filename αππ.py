@@ -254,7 +254,7 @@ if submitted:
         PDFbyte = pdf_file.read()
 
     st.download_button(
-        label="📥 Κατέβασε το Ωροσκόπό σου σε αρχείο PDF",
+        label="📥 Κατέβασε το Ωροσκόπιό σου σε αρχείο PDF",
         data=PDFbyte,
         file_name="to_katsikisio_oroskopio.pdf",
         mime="application/pdf",
