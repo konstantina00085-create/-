@@ -261,7 +261,35 @@ if submitted:
         """
         <div style="text-align: center; margin-bottom: 20px;">
             <a href="https://www.instagram.com/TO_INSTAGRAM_SOY" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
-                📸 Follow us on Instagram: @TO_INSTAGRAM_SOY
+                📸 Follow us on Instagram: # (Εδώ τελειώνουν οι κάρτες σου με τα col1 και col2)
+
+    st.markdown("---")
+    
+    # 📸 Clickable Link για το Instagram κάτω από τις κάρτες
+    st.markdown(
+        """
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/TO_INSTAGRAM_SOY" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
+                📸 Follow us on Instagram: # (Εδώ τελειώνουν οι κάρτες σου με τα col1 και col2)
+
+    st.markdown("---")
+    
+    # 📸 Clickable Link για το Instagram κάτω από τις κάρτες
+    st.markdown(
+        """
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/TO_INSTAGRAM_SOY" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
+                📸 Follow us on Instagram: https://www.instagram.com/katsikopodares.fc/?utm_source=ig_web_button_share_sheet
+            </a>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+            </a>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
             </a>
         </div>
         """, 
