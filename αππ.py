@@ -57,7 +57,7 @@ goats_data = [
         "id": 1, "name": "Fainting (Myotonic) Goat", 
         "keywords": "✨ Παρορμητική • ⚡ Ενθουσιώδης • 🧊 Ευαίσθητη στο Στρες",
         "desc": "Είναι η πρώτη που θα ορμήσει στην περιπέτεια με τεράστιο ενθουσιασμό, αλλά μόλις πιεστεί... κοκαλώνει επί τόπου! Θέλει να ηγείται, αλλά χρειάζεται υποστήριξη στα δύσκολα.",
-        "matches": "Mountain Goat, Damascus Goat, Pygmy Goat",
+        "matches": "Mountain Goat, Kri Kri Goat, Pygmy Goat",
         "img": "https://lifeandlandmagazine.com/wp-content/uploads/2024/12/IMG_8019.jpg" 
     },
     {
@@ -71,21 +71,21 @@ goats_data = [
         "id": 3, "name": "Pygmy Goat", 
         "keywords": "🚀 Υπερκινητική • 🔍 Περίεργη • 🌪️ Ανήσυχη",
         "desc": "Δεν σταματάει να πηδάει από βράχο σε βράχο και να εξερευνά τα πάντα. Αλλάζει γνώμη συνεχώς, θέλει συνεχή διέγερση και δεν αντέχει τη ρουτίνα ή την πλήξη.",
-        "matches": "Anglo-Nubian, Fainting Goat, Mountain Goat",
+        "matches": "Anglo-Nubian Goat, Fainting Goat, Mountain Goat",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKaipbtrVkU0dkHtI1_TQhk9rykbBz07H01rtHE9QF5IosIqaPmK2EhRY&s=10"
     },
     {
         "id": 4, "name": "Kashmiri Goat", 
         "keywords": "🧶 Ευαίσθητη • 🤗 Στοργική • 🌸 Πρόσχαρη",
         "desc": "Ζεστή και δοτική (λόγω του πλούσιου μαλλιού της), θέλει αγκαλιές και συναισθηματική ασφάλεια. Αν νιώσει ότι την αδικούν, κρύβεται στη γωνία της και κρατάει κακία.",
-        "matches": "Angora Goat, Black Bengal, Kiko Goat",
+        "matches": "Angora Goat, Black Bengal Goat, Kiko Goat",
         "img": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Kashmiri_Goat_-_Capra_Markhor_%28cropped%29.jpg"
     },
     {
         "id": 5, "name": "Kri Kri Goat", 
         "keywords": "👑 Βασιλική • 🌟 Επιβλητική • 🎭 Δραματική",
         "desc": "Γεννημένη σταρ! Θέλει όλα τα φώτα και την προσοχή πάνω της. Έχει ηγετική παρουσία, είναι υπερήφανη και απαιτεί τον ανάλογο σεβασμό από το υπόλοιπο κοπάδι.",
-        "matches": "Fainting Goat, Mountain Goat, Anglo-Nubian",
+        "matches": "Fainting Goat, Mountain Goat, Anglo-Nubian Goat",
         "img": "https://krikrihunt.eu/wp-content/uploads/2022/06/P1070805-1-1024x769.jpg?v=1656343975"
     },
     {
@@ -99,7 +99,7 @@ goats_data = [
         "id": 7, "name": "Anglo-Nubian Goat", 
         "keywords": "📢 Εκφραστική • 🥳 Κοινωνική • 🔊 Φωνακλού",
         "desc": "Με τα τεράστια αυτιά και τη δραματική της προσωπικότητα, δεν περνάει ποτέ απαρατήρητη. Αν κάτι δεν της αρέσει, θα το μάθει όλη η γειτονιά από το βέλασμά της.",
-        "matches": "Valais Blackneck, Pygmy Goat, Damascus Goat",
+        "matches": "Valais Blackneck Goat, Pygmy Goat, Damascus Goat",
         "img": "https://thewoolfamilyfarm.com/wp-content/uploads/2024/07/o4S_wUvw-1500x1200.jpeg"
     },
     {
@@ -113,28 +113,28 @@ goats_data = [
         "id": 9, "name": "Mountain Goat", 
         "keywords": "🧗 Ριψοκίνδυνη • 🦅 Ελεύθερη • 🌅 Αισιόδοξη",
         "desc": "Ελεύθερο πνεύμα που μισεί τους περιορισμούς. Θα σκαρφαλώσει στον πιο επικίνδυνο γκρεμό απλά και μόνο για τη θέα και την αίσθηση της ελευθερίας.",
-        "matches": "Fainting Goat, Damascus Goat, Valais Blackneck",
+        "matches": "Fainting Goat, Kri Kri Goat, Valais Blackneck Goat",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzz4x5tl9bDuErRijE17-3-kaWnoLSL2mhrjScHa95bBpqepS7NAFILIQ&s=10"
     },
     {
         "id": 10, "name": "Saanen Goat", 
         "keywords": "💼 Σοβαρή • 🥛 Εργατική • 👑 Ηγέτιδα",
         "desc": "Η επαγγελματίας του κοπαδιού. Αφοσιωμένη στους στόχους της, παράγει αποτελέσματα χωρίς πολλά λόγια και αναλαμβάνει πάντα τις ευθύνες όταν οι άλλοι πελαγώνουν.",
-        "matches": "Alpine Goat, Kiko Goat, Black Bengal",
+        "matches": "Alpine Goat, Kiko Goat, Black Bengal Goat",
         "img": "https://img.hobbyfarms.com/wp-content/uploads/2016/02/04234007/Saanen_Jeannette-Beranger1.jpg"
     },
     {
         "id": 11, "name": "Valais Blackneck Goat", 
         "keywords": "⚡ Αντισυμβατική • 🎨 Εναλλακτική • 🦄 Πρωτοποριακή",
         "desc": "Μισή μαύρη - μισή λευκή, ξεχωρίζει από χιλιόμετρα. Δεν ακολουθεί τους κανόνες του κοπαδιού, σκέφτεται εκτός ορίων και κάνει πάντα πράγματα με τον δικό της μοναδικό τρόπο.",
-        "matches": "Anglo-Nubian, Mountain Goat, Pygmy Goat",
+        "matches": "Anglo-Nubian Goat, Mountain Goat, Pygmy Goat",
         "img": "https://www.knuthenborg.dk/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fvvzubf5j%2Fproduction%2Ff9cbd5a3fd1bebc0d7100bf9ca315b4205c5a3a8-5132x3393.jpg%3Fw%3D400%26h%3D400%26fit%3Dcrop%26dpr%3D2%26q%3D100&w=3840&q=75"
     },
     {
         "id": 12, "name": "Angora Goat", 
         "keywords": "🌸 Καλλιτεχνική • ☁️ Ονειροπόλα • 🕊️ Πράα",
         "desc": "Με τις μακριές, αφράτες μπούκλες της, ζει στον δικό της ρομαντικό κόσμο. Είναι ειρηνική, αποφεύγει τις συγκρούσεις και αναζητά την ομορφιά και την αρμονία παντού.",
-        "matches": "Kashmiri Goat, Black Bengal, Alpine Goat",
+        "matches": "Kashmiri Goat, Black Bengal Goat, Alpine Goat",
         "img": "https://cdn.britannica.com/29/529-050-6B31311A/Angora-goat.jpg"
     }
 ]
