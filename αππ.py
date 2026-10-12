@@ -262,8 +262,7 @@ if submitted:
         # (Εδώ τελειώνουν οι κάρτες σου με τα col1 και col2)
 
     st.markdown("---")
-    
-st.markdown("---")
+
     
     # Κουμπί Instagram (100% σταθερό χωρίς στήλες)
     st.link_button("📸 Follow us on Instagram: @katsikopodares.fc", "https://www.instagram.com/katsikopodares.fc/", use_container_width=True)
