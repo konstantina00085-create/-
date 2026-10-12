@@ -258,7 +258,7 @@ if submitted:
     
  
     
-    # 📸 Clickable Link για το Instagram κάτω από τις κάρτες
+    #Clickable Link για το Instagram κάτω από τις κάρτες
     st.markdown(
         """
         <div style="text-align: center; margin-bottom: 20px;">
