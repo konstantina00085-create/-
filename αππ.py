@@ -1,6 +1,43 @@
 import streamlit as st
 from datetime import date
+from fpdf import FPDF
+import tempfile
+import os
 
+# Συνάρτηση δημιουργίας PDF
+def create_pdf(b_date, b_hour, main_g, asc_g):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    
+    pdf.set_font("helvetica", "B", 18)
+    pdf.cell(0, 10, "TO KATSIKISIO OROSKOPIO", align="C", new_x="LMARGIN", new_y="NEXT")
+    
+    pdf.set_font("helvetica", "", 11)
+    pdf.cell(0, 8, f"Imerominia Gennisis: {b_date} | Ora Gennisis: {b_hour}:00", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(10)
+    
+    pdf.set_font("helvetica", "B", 14)
+    pdf.cell(0, 8, f"1. KLYRIO ZODIO: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "I", 10)
+    pdf.cell(0, 6, f"Idiotites: {main_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "", 10)
+    pdf.multi_cell(0, 6, f"Charaktiristika: {main_g['desc']}")
+    pdf.cell(0, 6, f"Tairiazei me: {main_g['matches']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(8)
+    
+    pdf.set_font("helvetica", "B", 14)
+    pdf.cell(0, 8, f"2. OROSKOPOS: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "I", 10)
+    pdf.cell(0, 6, f"Idiotites: {asc_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_font("helvetica", "", 10)
+    pdf.multi_cell(0, 6, f"Pos se vlepoun: {asc_g['desc']}")
+    pdf.cell(0, 6, f"Armonia me: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
+    
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
+    pdf.output(temp_file.name)
+    return temp_file.name
+    
 # Επιστροφή σε centered layout για να φαίνονται ολόκληρες και σωστές οι εικόνες
 st.set_page_config(
     page_title="Το Κατσικίσιο Ωροσκόπιο",
@@ -208,3 +245,18 @@ if submitted:
                 </div>
             </div>
         """, unsafe_allow_html=True)
+
+        # Δημιουργία PDF αρχείου
+    pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
+
+    st.markdown("---")
+    with open(pdf_path, "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+
+    st.download_button(
+        label="📥 Κατέβασε το Ωροσκόπό σου σε αρχείο PDF",
+        data=PDFbyte,
+        file_name="to_katsikisio_oroskopio.pdf",
+        mime="application/pdf",
+        use_container_width=True
+    )
