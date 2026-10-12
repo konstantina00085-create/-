@@ -263,15 +263,10 @@ if submitted:
 
     st.markdown("---")
     
-    # Κεντραρισμένο κουμπί Instagram
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.link_button(
-            "📸 Follow us on Instagram: @katsikopodares.fc",
-            "https://www.instagram.com/katsikopodares.fc/",
-            use_container_width=True
-        )
-
+st.markdown("---")
+    
+    # Κουμπί Instagram (100% σταθερό χωρίς στήλες)
+    st.link_button("📸 Follow us on Instagram: @katsikopodares.fc", "https://www.instagram.com/katsikopodares.fc/", use_container_width=True)
         # Δημιουργία PDF αρχείου
     pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
 
