@@ -3,18 +3,18 @@ from datetime import date
 from fpdf import FPDF
 import tempfile
 import os
-
 import urllib.request
 import os
 
-# Συνάρτηση δημιουργίας PDF με υποστήριξη ελληνικών (Unicode)
+# Συνάρτηση δημιουργίας PDF με ασφαλή υποστήριξη ελληνικών
 def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_auto_page_break(auto=True, margin=15)
     
-    # Αυτόματο κατέβασμα γραμματοσειράς Unicode (DejaVuSans) για ελληνικά
     font_path = "DejaVuSans.ttf"
+    font_loaded = False
+    
     if not os.path.exists(font_path):
         try:
             url = "https://github.com/dejavu-fonts/dejavu-fonts-ttf/raw/2.37/ttf/DejaVuSans.ttf"
@@ -23,45 +23,71 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
             pass
             
     if os.path.exists(font_path):
-        pdf.add_font("DejaVu", "", font_path)
-        pdf.set_font("DejaVu", size=10)
+        try:
+            pdf.add_font("DejaVu", "", font_path)
+            pdf.set_font("DejaVu", size=16)
+            font_loaded = True
+        except Exception:
+            font_loaded = False
+            
+    # Αν για κάποιο λόγο δεν φορτώσει η Unicode, βάζουμε τη standard helvetica
+    if not font_loaded:
+        pdf.set_font("helvetica", "B", 16)
     
-    # Τίτλος (με μεγαλύτερο μέγεθος αντί για bold)
-    if os.path.exists(font_path):
-        pdf.set_font("DejaVu", size=16)
-    pdf.cell(0, 10, "ΤΟ ΚΑΤΣΙΚΙΣΙΟ ΩΡΟΣΚΟΠΙΟ", align="C", new_x="LMARGIN", new_y="NEXT")
+    # Τίτλος
+    title_text = "TO KATSIKISIO OROSKOPIO" if not font_loaded else "ΤΟ ΚΑΤΣΙΚΙΣΙΟ ΩΡΟΣΚΟΠΙΟ"
+    pdf.cell(0, 10, title_text, align="C", new_x="LMARGIN", new_y="NEXT")
     
-    if os.path.exists(font_path):
+    if font_loaded:
         pdf.set_font("DejaVu", size=11)
-    pdf.cell(0, 8, f"Ημερομηνία Γέννησης: {b_date} | Ώρα: {b_hour}:00", align="C", new_x="LMARGIN", new_y="NEXT")
+    else:
+        pdf.set_font("helvetica", "", 11)
+        
+    date_text = f"Imerominia Gennisis: {b_date} | Ora: {b_hour}:00" if not font_loaded else f"Ημερομηνία Γέννησης: {b_date} | Ώρα: {b_hour}:00"
+    pdf.cell(0, 8, date_text, align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(10)
     
     # Κύριο Ζώδιο
-    if os.path.exists(font_path):
+    if font_loaded:
         pdf.set_font("DejaVu", size=13)
-    pdf.cell(0, 8, f"1. ΚΥΡΙΟ ΖΩΔΙΟ: {main_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    else:
+        pdf.set_font("helvetica", "B", 13)
+        
+    main_title = f"1. KYRIO ZODIO: {main_g['name']}" if not font_loaded else f"1. ΚΥΡΙΟ ΖΩΔΙΟ: {main_g['name']}"
+    pdf.cell(0, 8, main_title, new_x="LMARGIN", new_y="NEXT")
     
-    if os.path.exists(font_path):
+    if font_loaded:
         pdf.set_font("DejaVu", size=10)
-    pdf.cell(0, 6, f"Ιδιότητες: {main_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
-    pdf.multi_cell(0, 6, f"Χαρακτηριστικά: {main_g['desc']}")
-    pdf.cell(0, 6, f"Ταιριάζει με: {main_g['matches']}", new_x="LMARGIN", new_y="NEXT")
+    else:
+        pdf.set_font("helvetica", "", 10)
+        
+    pdf.cell(0, 6, f"Idiotites: {main_g['keywords']}" if not font_loaded else f"Ιδιότητες: {main_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.multi_cell(0, 6, f"Charaktiristika: {main_g['desc']}" if not font_loaded else f"Χαρακτηριστικά: {main_g['desc']}")
+    pdf.cell(0, 6, f"Tairiazei me: {main_g['matches']}" if not font_loaded else f"Ταιριάζει με: {main_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(8)
     
     # Ωροσκόπος
-    if os.path.exists(font_path):
+    if font_loaded:
         pdf.set_font("DejaVu", size=13)
-    pdf.cell(0, 8, f"2. ΩΡΟΣΚΟΠΟΣ: {asc_g['name']}", new_x="LMARGIN", new_y="NEXT")
+    else:
+        pdf.set_font("helvetica", "B", 13)
+        
+    asc_title = f"2. OROSKOPOS: {asc_g['name']}" if not font_loaded else f"2. ΩΡΟΣΚΟΠΟΣ: {asc_g['name']}"
+    pdf.cell(0, 8, asc_title, new_x="LMARGIN", new_y="NEXT")
     
-    if os.path.exists(font_path):
+    if font_loaded:
         pdf.set_font("DejaVu", size=10)
-    pdf.cell(0, 6, f"Ιδιότητες: {asc_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
-    pdf.multi_cell(0, 6, f"Πώς σε βλέπουν: {asc_g['desc']}")
-    pdf.cell(0, 6, f"Αρμονία με: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
+    else:
+        pdf.set_font("helvetica", "", 10)
+        
+    pdf.cell(0, 6, f"Idiotites: {asc_g['keywords']}" if not font_loaded else f"Ιδιότητες: {asc_g['keywords']}", new_x="LMARGIN", new_y="NEXT")
+    pdf.multi_cell(0, 6, f"Pos se vlepoun: {asc_g['desc']}" if not font_loaded else f"Πώς σε βλέπουν: {asc_g['desc']}")
+    pdf.cell(0, 6, f"Armonia me: {asc_g['matches']}" if not font_loaded else f"Αρμονία με: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     pdf.output(temp_file.name)
     return temp_file.name
+
     
 # Επιστροφή σε centered layout για να φαίνονται ολόκληρες και σωστές οι εικόνες
 st.set_page_config(
