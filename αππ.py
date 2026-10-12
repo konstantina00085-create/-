@@ -252,6 +252,22 @@ if submitted:
             </div>
         """, unsafe_allow_html=True)
 
+        # (Εδώ τελειώνουν οι κάρτες σου με τα col1 και col2)
+
+    st.markdown("---")
+    
+    # 📸 Clickable Link για το Instagram κάτω από τις κάρτες
+    st.markdown(
+        """
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/TO_INSTAGRAM_SOY" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
+                📸 Follow us on Instagram: @TO_INSTAGRAM_SOY
+            </a>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
         # Δημιουργία PDF αρχείου
     pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
 
