@@ -35,10 +35,16 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.cell(0, 6, f"Matches: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(15)
     
-  # Signature with VERY BIG letters at the end
+ # Signature with VERY BIG letters at the end
     pdf.set_font("helvetica", "B", 22)
     pdf.cell(0, 12, "WITH LOVE,", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 12, "KATSIKOPODARES F.C.", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.ln(5)
+    
+    # Clickable Instagram Link ακριβώς κάτω από την υπογραφή
+    pdf.set_font("helvetica", "U", 11) # "U" για υπογράμμιση
+    pdf.set_text_color(225, 48, 108) # Ροζ-κόκκινο χρώμα Instagram
+    pdf.cell(0, 8, "Instagram: @katsikopodares.fc", align="C", link="https://www.instagram.com/katsikopodares.fc/", new_x="LMARGIN", new_y="NEXT")
 
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
     pdf.output(temp_file.name)
