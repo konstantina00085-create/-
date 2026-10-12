@@ -3,13 +3,15 @@ from datetime import date
 from fpdf import FPDF
 import tempfile
 import os
-# Συνάρτηση δημιουργίας PDF 100% σταθερή στα Αγγλικά
 def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_auto_page_break(auto=True, margin=15)
     
-    # Title
+    # Γήινο σκούρο καφέ χρώμα (RGB: 92, 64, 51)
+    pdf.set_text_color(92, 64, 51) 
+
+    # Τίτλος
     pdf.set_font("helvetica", "B", 18)
     pdf.cell(0, 10, "THE GOAT HOROSCOPE", align="C", new_x="LMARGIN", new_y="NEXT")
     
@@ -35,15 +37,14 @@ def create_pdf(b_date, b_hour, main_g, asc_g):
     pdf.cell(0, 6, f"Matches: {asc_g['matches']}", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(15)
     
- # Signature with VERY BIG letters at the end
+    # Μεγάλη υπογραφή στο τέλος
     pdf.set_font("helvetica", "B", 22)
     pdf.cell(0, 12, "WITH LOVE,", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 12, "KATSIKOPODARES F.C.", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(5)
     
     # Clickable Instagram Link ακριβώς κάτω από την υπογραφή
-    pdf.set_font("helvetica", "U", 11) # "U" για υπογράμμιση
-    pdf.set_text_color(225, 48, 108) # Ροζ-κόκκινο χρώμα Instagram
+    pdf.set_font("helvetica", "U", 11)
     pdf.cell(0, 8, "Instagram: @katsikopodares.fc", align="C", link="https://www.instagram.com/katsikopodares.fc/", new_x="LMARGIN", new_y="NEXT")
 
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
@@ -262,20 +263,18 @@ if submitted:
 
     st.markdown("---")
     
- 
     
-# Clickable Link για το Instagram κάτω από τις κάρτες
+    # Clickable Link για το Instagram σε γήινο χρώμα (#7A431D)
     st.markdown(
         """
         <div style="text-align: center; margin-bottom: 20px;">
-            <a href="https://www.instagram.com/katsikopodares.fc/" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #E1306C;">
+            <a href="https://www.instagram.com/katsikopodares.fc/" target="_blank" style="text-decoration: none; font-size: 16px; font-weight: bold; color: #7A431D;">
                 📸 Follow us on Instagram: @katsikopodares.fc
             </a>
         </div>
         """, 
         unsafe_allow_html=True
     )
- 
 
         # Δημιουργία PDF αρχείου
     pdf_path = create_pdf(birth_date, birth_hour, main_goat, asc_goat)
